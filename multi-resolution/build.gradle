@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+publish {
+  userOrg = 'bluesk05'
+  groupId = 'kr.co.bluesky05'
+  artifactId = 'multi_resolution'
+  publishVersion = '0.1.0'
+  desc = 'multi resolution resouce library'
+  website = 'https://github.com/bluesky05kr/multi-resolution'
+  issueTracker = "${website}/issues"
+  repository = "${website}.git"
+}
+
+
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "0.1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    classpath 'com.novoda:bintray-release:0.3.0'
+}
